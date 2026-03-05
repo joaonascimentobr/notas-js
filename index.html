@@ -6,6 +6,36 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Olá!</h1>
+
+    <script>
+
+        //criar um novo usuário
+        let servidor = "https://notas-api-qvzz.onrender.com/";
+
+        let endpoint = "usuarios";
+
+        let url = servidor + endpoint;
+
+        let novoUsuario = {
+            "nome": "joao",
+            "email": "joao@abc1.com",
+            "password": "1234@Acffff"
+        }
+
+        let requestInit = {
+            method:"POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(novoUsuario)
+        }
+
+        fetch(url, requestInit).then(response => {
+                console.log(response);
+            })
+
+    </script>
     
 </body>
 </html>
