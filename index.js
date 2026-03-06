@@ -8,24 +8,41 @@ let checkboxAoMenos1Maiusculo = document.getElementById("peloMenos1maiusculo");
 let checkboxAoMenos1Minusculo = document.getElementById("peloMenos1minuculo");
 let checkboxAoMenos1caracterEspecial = document.getElementById("caracterEspecial");
 
+let letrasMinusculas = [
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+];
+
+let letrasMaiusculas = [
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+];
+
+let numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 function temAoMenos8digitos() {
-    let quantidade = inputConfirmarSenha.value.length;
-    if (quantidade > 7) {
-        return true
-    } else {
-        return false
-    }
+    let quantidade = inputSenha.value.length;
+    return quantidade >= 8;
 }
 
 function temUmaSenhaMinucula() {
-
+    let senha = inputSenha.value;
+    for (let i = 0; i < senha.length; i++) {
+        let caractere = senha[i];
+        if (letrasMinusculas.includes(caractere)) {
+            checkboxAoMenos1Minusculo.checked = true;
+            return true;
+        }
+    }
+    checkboxAoMenos1Minusculo.checked = false;
+    return false;
 }
 
 function temUmaSenhaMaiuscula() {
     let senha = inputSenha.value;
     for (let i = 0; i < senha.length; i++) {
         let caractere = senha[i];
-        if (caractere === caractere.toUpperCase() && caractere !== caractere.toLowerCase()) {
+        if (letrasMaiusculas.includes(caractere)) {
             checkboxAoMenos1Maiusculo.checked = true;
             return true;
         }
@@ -36,16 +53,40 @@ function temUmaSenhaMaiuscula() {
 }
 
 function tem1caracterEspecial() {
+    let senha = inputSenha.value;
+    for (let i = 0; i < senha.length; i++) {
+        let caractere = senha[i];
+        let ehNumero = numeros.includes(caractere);
+        let ehMaiuscula = letrasMaiusculas.includes(caractere);
+        let ehMinuscula = letrasMinusculas.includes(caractere);
+        let ehAlfanumerico = ehNumero || ehMaiuscula || ehMinuscula;
 
+        if (!ehAlfanumerico) {
+            checkboxAoMenos1caracterEspecial.checked = true;
+            return true;
+        }
+    }
+    checkboxAoMenos1caracterEspecial.checked = false;
+    return false;
 }
 
 function validaComplexidadeSenha() {
+    let tem8digitos = temAoMenos8digitos();
+    checkBox8digitos.checked = tem8digitos;
 
+    let temMinuscula = temUmaSenhaMinucula();
+    let temMaiuscula = temUmaSenhaMaiuscula();
+    let temEspecial = tem1caracterEspecial();
+
+    return tem8digitos && temMinuscula && temMaiuscula && temEspecial;
 }
 
 function senhaOk() {
-    return temUmaSenhaMaiuscula();
+    return validaComplexidadeSenha();
 }
+
+inputSenha.addEventListener("input", validaComplexidadeSenha);
+validaComplexidadeSenha();
 
 
 
