@@ -1,0 +1,11 @@
+#notasContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.nota {
+    padding: 10px;
+    background-color: rgb(42, 165, 83);
+}

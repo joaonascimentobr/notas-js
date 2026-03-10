@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de usuario!</h1>
+
+        <form id="formCadastro">
+    
+            <label for="">Nome: </label>
+            <input required value="joao" id="nome" type="text" placeholder="Digite seu nome">
+        
+            <label for="email">Email: </label>
+            <input required id="email" type="email" placeholder="Digite sua E-mail">
+        
+            <label for="senha">Senha: </label>
+            <input required id="senha" type="password" placeholder="Digite sua senha">
+    
+            <label for="confirmarSenha">Confirme sua senha: </label>
+            <input required id="confirmarSenha" type="password" placeholder="Confirme sua senha">
+
+            <div class="regra-senha">
+                <input type="checkbox" id="caracterEspecial" disabled>
+                <label for="caracterEspecial">Deve ter pelo menos um caracter especial</label>
+            </div>
+
+            <div class="regra-senha">
+                <input type="checkbox" id="peloMenos8digitos" disabled>
+                <label for="peloMenos8digitos">Deve ter pelo menos 8 digitos</label>
+            </div>
+
+            <div class="regra-senha">
+                <input type="checkbox" id="peloMenos1minuculo" disabled>
+                <label for="peloMenos1minuculo">Deve ter pelo menos uma letra minucula</label>
+            </div>
+
+            <div class="regra-senha">
+                <input type="checkbox" name="" id="peloMenos1maiusculo" disabled>
+                <label for="peloMenos1maiusculo">Deve ter pelo menos uma letra maiuscula</label>
+            </div>
+
+            <button>salvar</button>
+        </form>
+
+    </div>
+    <script src="index.js"></script>
+    
+</body>
+</html>
